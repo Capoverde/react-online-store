@@ -8,23 +8,23 @@ const Product = ({ product }) => {
 
   console.log(product)
 
-  return <div>test</div>
   return (
     <Card className={classes.root}>
-      <CardMedia className={classes.media} image={product.image} title={Product.name} />
+      <CardMedia className={classes.media} image={product.media.source} title={Product.name} />
       <CardContent className={classes.cardContent}>
         <div>
           <Typography variant='h5' gutterBottom>
             {product.name}
           </Typography>
+
           <Typography variant='h5'>
-            {product.price}
+            {product.price.formatted_with_symbol}
           </Typography>
+
+          <Typography dangerouslySetInnerHTML={{ __html: product.description }} variant='body2' color='textSecondary' />
         </div>
-        <Typography variant='body2' color='textSecondary'>
-          {product.description}
-        </Typography>
       </CardContent>
+
       <CardActions disableSpacing className={classes.cardActions}>
         <IconButton aria-label='Add to Cart'>
           <AddShoppingCart />
